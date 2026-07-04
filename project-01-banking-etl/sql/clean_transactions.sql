@@ -9,3 +9,22 @@ HAVING COUNT(*) > 1;
 SELECT *
 FROM bank_transactions
 WHERE Customer_ID IS NULL;
+-- Find transactions with negative amounts
+
+SELECT *
+FROM bank_transactions
+WHERE Amount < 0;
+
+
+-- Find cancelled transactions
+
+SELECT *
+FROM bank_transactions
+WHERE Status = 'Cancelled';
+-- Return valid transactions
+
+SELECT *
+FROM bank_transactions
+WHERE Customer_ID IS NOT NULL
+  AND Amount > 0
+  AND Status = 'Completed';
